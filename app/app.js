@@ -4,10 +4,10 @@ var app = angular.module("app", ['ui.router','ngMaterial']);
 app.config(($stateProvider,$urlRouterProvider)=>{
   $urlRouterProvider.otherwise('/');
   $stateProvider
-    .state('login',{
-      title: 'Sign In',
-      url: '/login',
-      templateUrl: './components/login/login.html',
-      controller: 'LoginCntrl'
+    .state('register',{
+      title: 'Sign Up',
+      url: '/register',
+      templateUrl: './components/register/register.html',
+      controller: 'RegisterCntrl'
     })
 })

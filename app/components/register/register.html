@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/components/register/register.css">
+<md-content class="md-padding" style="width:100%;"  layout="row" layout-align="center">
+  <form style="width:100%;" name="myForm">
+    <div style="width:100%;" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Register</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Summoner Name</label>
+            <input ng-model="newUser.username"
+            type="text"
+            name="summonerName"
+            required>
+            <div ng-messages="myForm.summonerName.$error" role="alert">
+              <div ng-message="required">You did not enter a summoner name</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Email</label>
+            <input ng-model="newUser.email"
+            type="email"
+            name="email"
+            ng-minlength="1"
+            required>
+            <div ng-messages="myForm.email.$error" role="alert">
+              <div ng-message="email">You did not enter a valid email</div>
+            </div>
+          </md-input-container>
+          <div layout="row" layout-wrap>
+            <div flex="100" layout="column" class="preferedRole">
+              <div layout="row" layout-wrap flex>
+                <div flex="100" ng-repeat="role in roles">
+                  <md-checkbox ng-click="checkRole(role)">
+                    <span>{{role}}</span>
+                  </md-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Password</label>
+            <input ng-model="newUser.password"
+            type="password"
+            name="password"
+            ng-minlength="6"
+            required>
+            <div ng-messages="myForm.password.$error" role="alert">
+              <div ng-message="required">You did not enter a valid password</div>
+              <div ng-message="minlength">Your password is too short</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Confirm Password</label>
+            <input
+            ng-model="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            ng-pattern="/^{{newUser.password}}$/"
+            required/>
+            <div ng-messages="myForm.confirmPassword.$error" role="alert">
+              <div ng-message="pattern">Passwords do not match</div>
+            </div>
+          </md-input-container>
+
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Fuckin' Register</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </form>
+</md-content>
