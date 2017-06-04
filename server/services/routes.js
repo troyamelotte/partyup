@@ -1,5 +1,14 @@
-let users = require('./controllers/users.js')
+let users = require('../controllers/users.js')
 module.exports = (app)=>{
-  app.get('/', users.index);
-  app.get('/test', users.getUsers);
+  app.post('/users/create', users.create);
+  // app.use(authentication);
+  app.post('/users/gencode', users.genCode)
+  app.post('/users/validate', users.validate);
+}
+function authentication(req, res, next){
+  if(req.session.user){
+    next()
+  } else{
+    res.status(401).send("Permission denied")
+  }
 }
